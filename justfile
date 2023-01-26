@@ -5,27 +5,22 @@ help: _print_help
 
 setup: _install_dev_dependencies
 
-run: _run-client
+run:
+    just _run_concurrently \
+        vit "cd client && just run" \
+        api "cd server && just run"
 
-build: _build-client
+build:
+    just _run_concurrently \
+        build-vit "cd client && just build" \
+        build-api "cd server && just build"
+
+run-build:
+    just _run_concurrently \
+        vit-build "cd client && just run-build" \
+        api-build "cd server && just run-build"
 
 setup-vscode: _vscode _vscode_extensions
-
-# Client commands
-
-_run-client:
-    cd client && just run
-
-_build-client:
-    cd client && just build
-
-# Server commands
-
-_run-server:
-    cd server && just run
-
-_build-server:
-    cd server && just build
 
 # Helpers
 #########
@@ -60,6 +55,13 @@ _install_if_not_exists name install_cmd:
         echo "Running: '{{install_cmd}}'"
         {{install_cmd}}
     fi
+
+_run_concurrently name1 cmd1 name2 cmd2:
+    yarn concurrently "{{cmd1}}" "{{cmd2}}" \
+        --names "{{name1}},{{name2}}" \
+        --prefix-colors "bgMagenta.bold,bgBlue.bold" \
+         --kill-others-on-fail
+
 
 ## "just help"
 

@@ -6,11 +6,7 @@ _default:
 
 run:
     yarn
-    yarn vite --open
-
-preview:
-    yarn
-    yarn vite preview
+    yarn vite --open --clearScreen=false
 
 build:
     yarn
