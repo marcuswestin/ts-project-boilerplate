@@ -35,6 +35,7 @@ _build-server:
 NVM := "~/.nvm/nvm-exec"
 _install_dev_dependencies: _brew
     @ just _install_if_not_exists "yarn" "brew install yarn" 
+    yarn
 
 _brew:
     @ just _install_if_not_exists "brew" \
