@@ -1,15 +1,6 @@
 {
-  // "extends": "./shared/tsconfig.json",
+  "extends": "../shared/tsconfig.json",
   "include": ["src/**/*"],
   "exclude": [],
-  "compilerOptions": {
-    // "lib": ["es2019", "dom"]
-    // Import aliases and shared modules
-    // Keep this entry in sync with sharedModuleSettings ./vite.config.ts
-    // "baseUrl": ".",
-    // "rootDirs": ["./src", "../shared"],
-    // "paths": {
-    //   "shared/*": ["../shared/*"]
-    // }
-  }
+  "compilerOptions": {}
 }

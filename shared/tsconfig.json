@@ -2,8 +2,6 @@
 // that is shared across all services (server, web, mobile, etc)
 {
   "compilerOptions": {
-    "types": ["node"],
-    "lib": ["ES2015", "dom"],
     "target": "ES2015",
     "module": "commonjs",
     "declaration": false,
