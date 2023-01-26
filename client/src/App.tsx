@@ -31,6 +31,7 @@ function App() {
           onChange={(e) => {
             setUppercaseInput(e.target.value)
           }}
+          autoFocus
         />
         <h2>Uppercased: {uppercased}</h2>
         <input
