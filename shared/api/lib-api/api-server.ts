@@ -58,7 +58,7 @@ class APIServer<API extends APIDefinition> {
 
     return new Response(JSON.stringify(apiResponse), {
       status: 200,
-      statusText: null,
+      statusText: undefined,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
   }
