@@ -19,7 +19,7 @@ function makeAPIConfig<APIDef extends APIDefinition>(config: APIConfig<APIDef>):
 }
 
 export const ExampleAPIConfig = makeAPIConfig<ExampleAPI>({
-  apiHost: 'http://localhost:3004',
+  apiHost: 'http://localhost:4001',
   apiBaseRoute: 'api/ExampleAPI',
   apiPointNames: ['upperCase', 'double'],
 })

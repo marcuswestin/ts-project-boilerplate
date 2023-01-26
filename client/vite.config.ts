@@ -10,6 +10,8 @@ let sharedModuleSettings = {
     },
   },
   server: {
+    host: 'localhost',
+    port: 4000,
     fs: {
       allow: ['./src', `../shared`],
     },

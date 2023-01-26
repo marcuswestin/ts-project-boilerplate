@@ -1,0 +1,7 @@
+run:
+    ~/.bun/bin/bun run --hot src/server.ts
+
+install: _bun
+
+_bun:
+    curl -fsSL https://bun.sh/install | bash
