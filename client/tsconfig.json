@@ -14,8 +14,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+    "jsx": "react-jsx",
+
+    // Import aliases and shared modules
+    // Keep this entry in sync with sharedModuleSettings ./vite.config.ts
+    "baseUrl": ".",
+    "rootDirs": ["./src", "../shared"],
+    "paths": {
+      "shared/*": ["../shared/*"]
+    }
+  }
 }

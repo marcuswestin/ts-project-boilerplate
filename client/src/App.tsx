@@ -1,9 +1,14 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
+import { apiClient } from 'shared/api/api-definition'
 
 function App() {
   const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    runClient()
+  }, [])
 
   return (
     <div className="App">
@@ -32,3 +37,9 @@ function App() {
 }
 
 export default App
+
+async function runClient() {
+  let res1 = await apiClient.double({ num: 4 })
+  let res2 = await apiClient.upperCase({ text: 'lowercase' })
+  console.log(res1, res2)
+}
