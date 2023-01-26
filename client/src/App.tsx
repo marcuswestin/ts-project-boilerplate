@@ -14,8 +14,10 @@ function App() {
 
   useEffect(() => {
     async function pingAPI() {
-      setDoubled(await (await apiClient.double({ num: doubleInput })).doubled)
-      setUppercased(await (await apiClient.upperCase({ text: uppercaseInput })).upperCased)
+      let doubledRes = await apiClient.double({ num: doubleInput })
+      let uppercaseRes = await apiClient.upperCase({ text: uppercaseInput })
+      setDoubled(doubledRes.doubled)
+      setUppercased(uppercaseRes.upperCased)
     }
     pingAPI()
   }, [doubleInput, uppercaseInput])
