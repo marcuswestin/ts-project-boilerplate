@@ -1,10 +1,10 @@
 _default:
     just --list --unsorted
 
+help: _print_help
+
 # Commands
 ##########
-
-help: _print_help
 
 run:
     yarn
