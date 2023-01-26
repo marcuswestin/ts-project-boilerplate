@@ -16,3 +16,6 @@ build:
     yarn
     yarn tsc
     yarn vite build
+
+run-build:
+    yarn vite preview --open
