@@ -46,6 +46,7 @@ _brew:
 _vscode_extensions: _vscode
     code --install-extension skellock.just
     code --install-extension github.copilot
+    code --install-extension esbenp.prettier-vscode
 
 _vscode: _brew
     brew install --cask visual-studio-code
