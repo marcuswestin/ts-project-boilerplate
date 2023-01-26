@@ -5,15 +5,27 @@ help: _print_help
 
 setup: _install_dev_dependencies
 
-run: run-client
+run: _run-client
 
-run-client:
-    cd client && just run
-
-run-server:
-    cd server && just run
+build: _build-client
 
 setup-vscode: _vscode _vscode_extensions
+
+# Client commands
+
+_run-client:
+    cd client && just run
+
+_build-client:
+    cd client && just build
+
+# Server commands
+
+_run-server:
+    cd server && just run
+
+_build-server:
+    cd server && just build
 
 # Helpers
 #########
