@@ -8,10 +8,16 @@ help: _print_help
 
 run:
     yarn
-    yarn dev --open
+    yarn vite --open
+
+preview:
+    yarn
+    yarn vite preview
 
 build:
-    yarn build
+    yarn
+    yarn tsc
+    yarn vite build
 
 setup: _install_dev_dependencies
 
