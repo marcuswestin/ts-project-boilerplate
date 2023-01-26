@@ -54,7 +54,9 @@ class APIServer<API extends APIDefinition> {
     }
 
     let apiRequest = await req.json()
+    console.log('REQ >', req.method, req.url, ':', JSON.stringify(apiRequest))
     let apiResponse = await handler(apiRequest)
+    console.log('RES <', req.method, req.url, ':', JSON.stringify(apiResponse))
 
     return new Response(JSON.stringify(apiResponse), {
       status: 200,
