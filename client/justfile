@@ -1,0 +1,18 @@
+_default:
+    just --list --unsorted
+
+# Client commands
+#################
+
+run:
+    yarn
+    yarn vite --open
+
+preview:
+    yarn
+    yarn vite preview
+
+build:
+    yarn
+    yarn tsc
+    yarn vite build

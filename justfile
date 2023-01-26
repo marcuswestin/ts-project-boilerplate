@@ -3,23 +3,15 @@ _default:
 
 help: _print_help
 
-# Commands
-##########
-
-run:
-    yarn
-    yarn vite --open
-
-preview:
-    yarn
-    yarn vite preview
-
-build:
-    yarn
-    yarn tsc
-    yarn vite build
-
 setup: _install_dev_dependencies
+
+run: run-client
+
+run-client:
+    cd client && just run
+
+run-server:
+    cd server && just run
 
 setup-vscode: _vscode _vscode_extensions
 
@@ -60,7 +52,15 @@ _install_if_not_exists name install_cmd:
 _print_help:
     @echo
     @echo " - To get started:"
-    @echo "     just setup run"
+    @echo "     just setup"
+    @echo "     just run-client"
+    @echo "     just run-server"
+    @echo
+    @echo " - For more client commands:"
+    @echo "     cd client && just"
+    @echo
+    @echo " - For more server commands:"
+    @echo "     cd server && just"
     @echo
     @echo " - To learn more about just:"
     @echo "     open https://cheatography.com/linux-china/cheat-sheets/justfile/"
