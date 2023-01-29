@@ -1,17 +1,23 @@
 _default:
     just --list --unsorted
 
-# Client commands
-#################
+# Commands
+##########
 
-run:
-    yarn
+run: _deps
     yarn vite --open --clearScreen=false
 
-build:
-    yarn
+build-run: build run-build
+
+build: _deps
     yarn tsc
     yarn vite build
 
-run-build:
-    yarn vite preview --open
+run-build: _deps
+    yarn vite preview --open --clearScreen=false
+
+# Hidden
+########
+
+_deps:
+    yarn

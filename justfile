@@ -1,34 +1,41 @@
+# Info
+######
+
 _default:
     just --list --unsorted
 
 help: _print_help
 
-setup: _install_dev_dependencies
+# Commands
+##########
 
-run:
+run: _deps
     just _run_concurrently \
         vit "cd client && just run" \
         api "cd server && just run"
 
-build:
+build-run:
     just _run_concurrently \
-        build-vit "cd client && just build" \
-        build-api "cd server && just build"
+        client-build "just build-run-client" \
+        server-build "just build-run-server"
 
-run-build:
-    just _run_concurrently \
-        vit-build "cd client && just run-build" \
-        api-build "cd server && just run-build"
+build-run-client: _deps
+    cd client && just build-run
 
-setup-vscode: _vscode _vscode_extensions
+build-run-server: _deps
+    docker-compose up --build --remove-orphans
 
-# Helpers
-#########
 
-# Dev dependencies
+setup-vscode: _deps _vscode _vscode_extensions
+
+
+# Hidden
+########
+
+## Dev dependencies
 
 NVM := "~/.nvm/nvm-exec"
-_install_dev_dependencies: _brew
+_deps: _brew
     @ just _install_if_not_exists "yarn" "brew install yarn" 
     yarn
 
@@ -67,15 +74,18 @@ _run_concurrently name1 cmd1 name2 cmd2:
 
 _print_help:
     @echo
-    @echo " - To get started:"
-    @echo "     just setup"
+    @echo " - To run in dev mode (server & client):"
+    @echo "     just run"
+    @echo
+    @echo " - To build and run (server & client):"
+    @echo "     just build-run"
+    @echo
+    @echo " - To run server and client seperately in dev mode:"
     @echo "     just run-client"
     @echo "     just run-server"
     @echo
-    @echo " - For more client commands:"
+    @echo " - For more commands:"
     @echo "     cd client && just"
-    @echo
-    @echo " - For more server commands:"
     @echo "     cd server && just"
     @echo
     @echo " - To learn more about just:"

@@ -11,9 +11,28 @@ let exampleAPIServer = makeAPIServer(ExampleAPIConfig, {
   // } as const) // needed?
 })
 
+// let url = new URL(ExampleAPIConfig.apiHost)
+// console.log('Start on', url)
+
+let port = 7856
+console.log('START ON ', port)
+
 export default {
-  port: new URL(ExampleAPIConfig.apiHost).port,
+  // port: url.port,
+  port,
   fetch(request: Request) {
+    if (new URL(request.url).pathname === '/') {
+      return new Response('Hello from server ', { status: 200 })
+    }
     return exampleAPIServer.handleRequest(request)
   },
 }
+
+// let port = 7856
+// console.log('Start on :' + port)
+// export default {
+//   port: port,
+//   fetch(request: Request) {
+//     return new Response('Hello asdfrom asdasd server', { status: 200 })
+//   },
+// }

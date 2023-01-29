@@ -1,10 +1,27 @@
-run:
+# Commands
+##########
+
+run: _deps
+    bun install
     ~/.bun/bin/bun run --hot src/server.ts
 
-install: _bun
+build: _deps
+    @echo "Build from root of the project instead"
 
-build:
-    @echo "No build for server yet"
+
+# Hidden
+########
+
+_deps: _bun
 
 _bun:
-    curl -fsSL https://bun.sh/install | bash
+    just _install_if_not_exists bun "curl -fsSL https://bun.sh/install | bash"
+
+
+_install_if_not_exists name install_cmd:
+    #!/bin/zsh
+    if ! hash "{{name}}" > /dev/null; then
+        echo "install {{name}}"
+        echo "Running: '{{install_cmd}}'"
+        {{install_cmd}}
+    fi
