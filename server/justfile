@@ -20,7 +20,7 @@ _bun:
 
 _install_if_not_exists name install_cmd:
     #!/bin/zsh
-    if ! hash "{{name}}" > /dev/null; then
+    if ! which "{{name}}" > /dev/null; then
         echo "install {{name}}"
         echo "Running: '{{install_cmd}}'"
         {{install_cmd}}
