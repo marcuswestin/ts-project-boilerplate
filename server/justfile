@@ -3,7 +3,7 @@
 
 run: _deps
     bun install
-    ~/.bun/bin/bun run --hot src/server.ts
+    bun run --hot src/server.ts
 
 build: _deps
     @echo "Build from root of the project instead"
@@ -12,11 +12,8 @@ build: _deps
 # Hidden
 ########
 
-_deps: _bun
-
-_bun:
-    just _install_if_not_exists bun "curl -fsSL https://bun.sh/install | bash"
-
+_deps:
+    @ just _install_if_not_exists bun "brew tap oven-sh/bun && brew install bun"
 
 _install_if_not_exists name install_cmd:
     #!/bin/zsh
