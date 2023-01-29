@@ -3,4 +3,4 @@ services:
   docker-server:
     build: .
     ports:
-      - "4001:7856"
+      - "4001:4001"

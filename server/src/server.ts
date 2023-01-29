@@ -11,15 +11,11 @@ let exampleAPIServer = makeAPIServer(ExampleAPIConfig, {
   // } as const) // needed?
 })
 
-// let url = new URL(ExampleAPIConfig.apiHost)
-// console.log('Start on', url)
-
-let port = 7856
-console.log('START ON ', port)
+let url = new URL(ExampleAPIConfig.apiHost)
+console.log('Start on', url.port)
 
 export default {
-  // port: url.port,
-  port,
+  port: parseInt(url.port),
   fetch(request: Request) {
     if (new URL(request.url).pathname === '/') {
       return new Response('Hello from server ', { status: 200 })
