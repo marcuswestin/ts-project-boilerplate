@@ -18,7 +18,7 @@ build:
 run-build:
     just _run_concurrently \
         vit-build "cd client && just run-build" \
-        api-build "cd server && just run-build"
+        api-build "cd server && just run"
 
 setup-vscode: _vscode _vscode_extensions
 
